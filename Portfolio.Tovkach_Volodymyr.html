@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volodymyr Tovkach | Portfolio</title>
+    <style>
+        /* FONTS SETUP */
+        @font-face {
+            font-family: 'Krick';
+            src: url('fonts/Krick-Bold.ttf') format('truetype');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'Krick';
+            src: url('fonts/Krick-Medium.ttf') format('truetype');
+            font-weight: 500;
+        }
+
+        :root {
+            --bg: #fafaff;
+            --accent: #6396ff;
+            --main-dark: #27272e;
+            --grey: #57575e;
+            --white: #ffffff;
+            --smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Avory', sans-serif; /* Используется Avory, если установлен, иначе системный */
+            background-color: var(--bg);
+            color: var(--main-dark);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Krick', sans-serif;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--main-dark);
+            margin-left: 40px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: var(--smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: var(--smooth);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* HERO SECTION */
+        section { padding: 120px 8% 60px; scroll-margin-top: 100px; }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero span {
+            color: var(--accent);
+            letter-spacing: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Krick', sans-serif;
+            font-size: clamp(45px, 12vw, 120px);
+            line-height: 0.85;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* PROJECTS GRID */
+        h2 {
+            font-family: 'Krick', sans-serif;
+            color: var(--accent);
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: var(--smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(99, 150, 255, 0.12);
+        }
+
+        .img-box {
+            width: 100%;
+            padding: 30px;
+            background: #fcfcfc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .project-info { padding: 25px; border-top: 1px solid #f8f8f8; }
+        .project-info h3 { font-family: 'Krick', sans-serif; font-size: 22px; color: var(--accent); }
+        .project-info p { font-size: 14px; color: var(--grey); margin-top: 5px; }
+
+        /* ABOUT SECTION */
+        .about-wrap { max-width: 900px; }
+        .about-wrap p { font-size: 24px; line-height: 1.5; margin-bottom: 25px; }
+
+        /* CONTACT SECTION */
+        .contact-links a {
+            display: block;
+            font-family: 'Krick', sans-serif;
+            font-size: clamp(30px, 7vw, 65px);
+            color: var(--main-dark);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: var(--smooth);
+        }
+
+        .contact-links a:hover { color: var(--accent); padding-left: 20px; }
+
+        footer {
+            padding: 60px 8%;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: var(--grey);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .work-grid { grid-template-columns: 1fr; }
+            section { padding: 80px 6%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo">VT</a>
+        <nav class="nav-links">
+            <a href="#projects">Projekte</a>
+            <a href="#about">Über mich</a>
+            <a href="#contact">Kontakt</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <span>PORTFOLIO</span>
+            <h1>VOLODYMYR<br>TOVKACH</h1>
+        </section>
+
+        <section id="projects">
+            <h2>Ausgewählte Arbeiten</h2>
+            <div class="work-grid">
+                <div class="project-card">
+                    <div class="img-box"><img src="radiohead.png" alt="Radiohead Poster"></div>
+                    <div class="project-info">
+                        <h3>Radiohead Poster</h3>
+                        <p>Graphic Design / Adobe Photoshop & InDesign</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="img-box"><img src="font.png" alt="Font-Broschüre"></div>
+                    <div class="project-info">
+                        <h3>Font-Broschüre "Planet Kosmos"</h3>
+                        <p>Typography / Figma & InDesign</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="img-box"><img src="stuttgart.jpg" alt="Stuttgart Poster"></div>
+                    <div class="project-info">
+                        <h3>Stuttgart City Poster</h3>
+                        <p>Digital Art / Adobe Photoshop & InDesign</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="img-box"><img src="alta.png" alt="Alta Logo"></div>
+                    <div class="project-info">
+                        <h3>Alta Logo Design</h3>
+                        <p>Branding / Adobe Illustrator</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>Über mich</h2>
+            <div class="about-wrap">
+                <p>Ich bin angehender Mediengestalter (Digital & Print) an der Johannes-Gutenberg-Schule. Mein Fokus liegt auf präzisem Design mit der Adobe Creative Cloud und Figma. Durch mein Praktikum bei Photofabrics bringe ich praktische Erfahrung in der Umsetzung kreativer Projekte mit. Strukturiert, lernwillig und detailverliebt.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <div class="contact-links">
+                <a href="mailto:vovk63807@gmail.com">vovk63807@gmail.com</a>
+                <a href="tel:+491757047759">+49 175 704 7759</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Volodymyr Tovkach — Stuttgart, Deutschland</p>
+    </footer>
+
+</body>
+</html>
